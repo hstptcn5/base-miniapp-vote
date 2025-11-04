@@ -4,7 +4,8 @@
 // IMPORTANT: After deploying, generate accountAssociation at:
 // https://www.base.dev/preview?tab=account
 
-const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+// Default to deployed URL, can be overridden by env variable
+const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://base-miniapp-vote.vercel.app';
 
 export const minikitConfig = {
   accountAssociation: {
