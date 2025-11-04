@@ -9,14 +9,9 @@ const ROOT_URL = process.env.NEXT_PUBLIC_APP_URL || 'https://base-miniapp-vote.v
 
 export const minikitConfig = {
   accountAssociation: {
-    // ⚠️ TODO: Generate via Base Build Account Association tool
-    // 1. Deploy app to production (HTTPS)
-    // 2. Visit: https://www.base.dev/preview?tab=account
-    // 3. Enter your app URL and sign with wallet
-    // 4. Copy the generated accountAssociation here
-    header: "",
-    payload: "",
-    signature: ""
+    header: "eyJmaWQiOjE0MTIwMzMsInR5cGUiOiJjdXN0b2R5Iiwia2V5IjoiMHgxNkY4Qzk1NGY2RDQ2OTRiN0M1NUFGOWEwYzFhOGQ2NkViMDkxMDdBIn0",
+    payload: "eyJkb21haW4iOiJiYXNlLW1pbmlhcHAtdm90ZS52ZXJjZWwuYXBwIn0",
+    signature: "kqwlNueTf3pTXMrwsAp9LAaEmQehwI0pAEnyYM8Z8ZQ4v9qM+BMQjR/7fwfyqoiny8PKiBH/qmeh5F2pGJK4Lxs="
   },
   miniapp: {
     version: "1",
