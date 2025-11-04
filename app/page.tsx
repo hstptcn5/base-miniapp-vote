@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+import { sdk } from '@farcaster/miniapp-sdk'
 import { Wallet } from '@coinbase/onchainkit/wallet'
 import { ConnectWallet, WalletDropdown } from '@coinbase/onchainkit/wallet'
 import { Avatar, Name, Address, EthBalance, Identity } from '@coinbase/onchainkit/identity'
@@ -86,6 +88,11 @@ export default function Home() {
 
   // Generate array of poll IDs (from 1 to pollCount)
   const pollIds = Array.from({ length: pollCount }, (_, i) => i + 1).reverse()
+
+  // Call sdk.actions.ready() when app is ready to hide splash screen
+  useEffect(() => {
+    sdk.actions.ready()
+  }, [])
 
   return (
     <main className="min-h-screen bg-gray-50">
