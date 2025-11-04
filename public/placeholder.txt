@@ -1,0 +1,13 @@
+# Public Assets
+
+Place your app assets here:
+- icon.png - App icon (recommended: 512x512px)
+- screenshot.png - Screenshot for app store (recommended: 1284x2778px for portrait)
+- splash.png - Splash screen
+- hero.png - Hero image for embeds
+- og-image.png - Open Graph image for social sharing
+- logo.png - Logo for wallet modal
+
+You can use the Mini App Assets Generator: https://www.miniappassets.com/
+
+
