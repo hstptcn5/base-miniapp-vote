@@ -16,7 +16,7 @@ export const minikitConfig = {
   miniapp: {
     version: "1",
     name: "Poll App",
-    subtitle: "Create and vote on polls on Base",
+    subtitle: "Vote on polls on Base",
     description: "A decentralized polling app built on Base. Create polls and vote onchain with smart contracts!",
     screenshotUrls: [`${ROOT_URL}/screenshot.png`],
     iconUrl: `${ROOT_URL}/icon.png`,
