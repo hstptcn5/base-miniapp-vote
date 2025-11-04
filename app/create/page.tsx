@@ -54,7 +54,7 @@ export default function CreatePoll() {
     }
 
     // Duration in seconds (convert days to seconds)
-    const durationInSeconds = duration * 24 * 60 * 60
+    const durationInSeconds = BigInt(duration * 24 * 60 * 60)
 
     try {
       writeContract({
