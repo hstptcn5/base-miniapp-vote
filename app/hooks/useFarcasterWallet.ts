@@ -6,8 +6,8 @@ import { getAddress, type Address } from 'viem'
 // Dynamically import SDK to avoid errors if not available
 async function getSDK() {
   try {
-    const module = await import('@farcaster/miniapp-sdk')
-    return module.sdk
+    const { sdk } = await import('@farcaster/miniapp-sdk')
+    return sdk
   } catch (error) {
     // SDK not available - this is fine for non-Farcaster environments
     return null
