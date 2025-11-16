@@ -3,6 +3,7 @@
 import { OnchainKitProvider } from '@coinbase/onchainkit'
 import { baseSepolia } from 'wagmi/chains'
 import { NetworkSwitcher } from './components/NetworkSwitcher'
+import { ErrorSuppressor } from './components/ErrorSuppressor'
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -11,8 +12,8 @@ export function Providers({ children }: { children: React.ReactNode }) {
       chain={baseSepolia}
       config={{
         appearance: {
-          name: 'My Mini App',
-          logo: '/logo.png',
+          name: 'Poll App',
+          logo: '/logo.svg',
           mode: 'auto',
         },
         wallet: {
@@ -20,6 +21,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
         },
       }}
     >
+      <ErrorSuppressor />
       <NetworkSwitcher />
       {children}
     </OnchainKitProvider>

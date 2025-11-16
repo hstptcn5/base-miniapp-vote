@@ -11,6 +11,7 @@ import { useAccount, useChainId } from 'wagmi'
 import { baseSepolia } from 'wagmi/chains'
 import { usePollCount, usePoll } from '@/app/hooks/usePoll'
 import { POLL_CONTRACT_ADDRESS } from '@/app/lib/contract'
+import { FarcasterWallet } from '@/app/components/FarcasterWallet'
 
 function PollCard({ pollId }: { pollId: number }) {
   const { poll, votes, isLoading } = usePoll(pollId)
@@ -101,21 +102,24 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <h1 className="text-2xl font-bold">Poll App</h1>
 
-          <Wallet>
-            <ConnectWallet>
-              <Avatar className="h-6 w-6" />
-              <Name />
-            </ConnectWallet>
-            <WalletDropdown>
-              <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
-                <Avatar />
+          <div className="flex items-center gap-3">
+            <FarcasterWallet />
+            <Wallet>
+              <ConnectWallet>
+                <Avatar className="h-6 w-6" />
                 <Name />
-                <Address />
-                <EthBalance />
-              </Identity>
-              <WalletDropdownDisconnect />
-            </WalletDropdown>
-          </Wallet>
+              </ConnectWallet>
+              <WalletDropdown>
+                <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+                  <Avatar />
+                  <Name />
+                  <Address />
+                  <EthBalance />
+                </Identity>
+                <WalletDropdownDisconnect />
+              </WalletDropdown>
+            </Wallet>
+          </div>
         </div>
       </header>
 
