@@ -134,6 +134,9 @@ export default function Home() {
             <p className="text-gray-600 mb-8">
               Connect your wallet to create and vote on polls!
             </p>
+            <div className="flex justify-center gap-4">
+              <FarcasterWallet />
+            </div>
           </div>
         ) : isWrongNetwork ? (
           <div className="text-center py-12">
