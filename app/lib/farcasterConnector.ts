@@ -110,7 +110,8 @@ export function farcasterConnector() {
           throw new Error('Farcaster context not available')
         }
         
-        const signer = await context.getSigner()
+        // Type assertion for getSigner which may exist at runtime
+        const signer = await (context as any).getSigner()
         if (!signer) {
           throw new Error('Farcaster signer not available')
         }

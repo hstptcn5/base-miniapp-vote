@@ -85,7 +85,8 @@ export function useFarcasterWallet() {
       if (!sdkInstance) {
         throw new Error('Farcaster SDK not available')
       }
-      const signer = await sdkInstance.context.getSigner()
+      const context = await sdkInstance.context
+      const signer = await (context as any).getSigner()
       return signer
     } catch (error) {
       console.error('Error getting Farcaster signer:', error)
