@@ -32,6 +32,9 @@ export const minikitConfig = {
     ogDescription: "Create and vote on polls on Base blockchain",
     ogImageUrl: `${ROOT_URL}/og.png`,
   },
+  baseBuilder: {
+    ownerAddress: "0x71d5f27c5009fB33ed3e7BAF57b793C0A8879927",
+  },
 } as const;
 
 

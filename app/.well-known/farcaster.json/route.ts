@@ -6,6 +6,7 @@ export async function GET() {
   const manifest = {
     accountAssociation: minikitConfig.accountAssociation,
     miniapp: minikitConfig.miniapp,
+    baseBuilder: minikitConfig.baseBuilder,
   }
 
   return NextResponse.json(manifest, {

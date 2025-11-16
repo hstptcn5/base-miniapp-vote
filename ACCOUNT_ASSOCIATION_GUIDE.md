@@ -86,3 +86,5 @@ Sau khi hoàn thành:
 - **App URL**: https://base-miniapp-vote.vercel.app/
 - **Manifest**: https://base-miniapp-vote.vercel.app/.well-known/farcaster.json
 
+
+
