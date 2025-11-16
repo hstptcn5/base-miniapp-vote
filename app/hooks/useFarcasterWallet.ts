@@ -37,8 +37,10 @@ export function useFarcasterWallet() {
         await new Promise(resolve => setTimeout(resolve, 100))
         
         const context = await sdkInstance.context
-        if (context?.accountAddress) {
-          const addr = getAddress(context.accountAddress)
+        // Type assertion for accountAddress which may exist at runtime
+        const accountAddress = (context as any)?.accountAddress
+        if (accountAddress) {
+          const addr = getAddress(accountAddress)
           setAddress(addr)
           setIsAvailable(true)
         } else {
@@ -63,10 +65,11 @@ export function useFarcasterWallet() {
         throw new Error('Farcaster SDK not available')
       }
       const context = await sdkInstance.context
-      if (!context?.accountAddress) {
+      const accountAddress = (context as any)?.accountAddress
+      if (!accountAddress) {
         throw new Error('Farcaster wallet not available')
       }
-      const addr = getAddress(context.accountAddress)
+      const addr = getAddress(accountAddress)
       setAddress(addr)
       setIsAvailable(true)
       return addr

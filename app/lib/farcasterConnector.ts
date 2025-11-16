@@ -42,10 +42,12 @@ export function farcasterConnector() {
           throw new Error('Farcaster SDK not available')
         }
         const context = await sdkInstance.context
-        if (!context?.accountAddress) {
+        // Type assertion for accountAddress which may exist at runtime
+        const accountAddress = (context as any)?.accountAddress
+        if (!accountAddress) {
           throw new Error('Farcaster wallet not available')
         }
-        return [getAddress(context.accountAddress) as Address]
+        return [getAddress(accountAddress) as Address]
       } catch (error) {
         throw new Error('Failed to get Farcaster wallet address')
       }
