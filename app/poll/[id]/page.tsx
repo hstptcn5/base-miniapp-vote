@@ -12,7 +12,7 @@ import { POLL_CONTRACT_ADDRESS, POLL_CONTRACT_ABI } from '@/app/lib/contract'
 export default function PollDetail() {
   const params = useParams()
   const router = useRouter()
-  const { isConnected, address } = useAccount()
+  const { isConnected, address, connector } = useAccount()
   const pollId = params.id ? Number(params.id) : undefined
 
   const { poll, votes, isLoading: isLoadingPoll } = usePoll(pollId || 0)

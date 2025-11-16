@@ -81,7 +81,7 @@ function PollCard({ pollId }: { pollId: number }) {
 }
 
 export default function Home() {
-  const { isConnected } = useAccount()
+  const { isConnected, connector } = useAccount()
   const chainId = useChainId()
   const { pollCount, isLoading: isLoadingCount } = usePollCount()
   
@@ -104,21 +104,24 @@ export default function Home() {
 
           <div className="flex items-center gap-3">
             <FarcasterWallet />
-            <Wallet>
-              <ConnectWallet>
-                <Avatar className="h-6 w-6" />
-                <Name />
-              </ConnectWallet>
-              <WalletDropdown>
-                <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
-                  <Avatar />
+            {/* Only show OnchainKit Wallet if Farcaster wallet is not connected */}
+            {!(isConnected && connector?.id === 'farcaster') && (
+              <Wallet>
+                <ConnectWallet>
+                  <Avatar className="h-6 w-6" />
                   <Name />
-                  <Address />
-                  <EthBalance />
-                </Identity>
-                <WalletDropdownDisconnect />
-              </WalletDropdown>
-            </Wallet>
+                </ConnectWallet>
+                <WalletDropdown>
+                  <Identity className="px-4 pt-3 pb-2" hasCopyAddressOnClick>
+                    <Avatar />
+                    <Name />
+                    <Address />
+                    <EthBalance />
+                  </Identity>
+                  <WalletDropdownDisconnect />
+                </WalletDropdown>
+              </Wallet>
+            )}
           </div>
         </div>
       </header>
