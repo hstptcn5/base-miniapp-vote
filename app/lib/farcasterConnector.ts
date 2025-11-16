@@ -26,9 +26,9 @@ export function farcasterConnector() {
       const accounts = await this.getAccounts()
       
       return {
-        accounts,
+        accounts: accounts as readonly `0x${string}`[],
         chainId,
-      }
+      } as any
     },
 
     async disconnect() {
@@ -96,6 +96,11 @@ export function farcasterConnector() {
     onChainChanged(chainId) {
       const id = normalizeChainId(chainId)
       config.emitter.emit('change', { chainId: id })
+    },
+
+    onDisconnect() {
+      // Farcaster wallet disconnect handling
+      config.emitter.emit('disconnect')
     },
 
     async getProvider() {
