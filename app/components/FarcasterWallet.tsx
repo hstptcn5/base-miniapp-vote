@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useFarcasterWallet } from '@/app/hooks/useFarcasterWallet'
 import { useAccount, useConnect } from 'wagmi'
 import { farcasterConnector } from '@/app/lib/farcasterConnector'
@@ -10,6 +10,30 @@ export function FarcasterWallet() {
   const { address: connectedAddress, isConnected, connector } = useAccount()
   const { connect, isPending } = useConnect()
   const [isConnecting, setIsConnecting] = useState(false)
+  const [hasAutoConnected, setHasAutoConnected] = useState(false)
+
+  // Auto-connect Farcaster wallet when available and not already connected
+  useEffect(() => {
+    const autoConnect = async () => {
+      // Only auto-connect if:
+      // 1. Farcaster wallet is available
+      // 2. Not currently loading
+      // 3. User not already connected
+      // 4. Haven't already tried to auto-connect
+      if (isAvailable && !isLoading && !isConnected && !hasAutoConnected && farcasterAddress) {
+        try {
+          setHasAutoConnected(true)
+          const connectorInstance = farcasterConnector()
+          await connect({ connector: connectorInstance })
+        } catch (error) {
+          // Silently fail auto-connect - user can still manually connect
+          console.log('Auto-connect Farcaster wallet failed:', error)
+        }
+      }
+    }
+
+    autoConnect()
+  }, [isAvailable, isLoading, isConnected, hasAutoConnected, farcasterAddress, connect])
 
   // Don't show if Farcaster wallet is not available
   if (isLoading || !isAvailable) {
